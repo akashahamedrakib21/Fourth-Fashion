@@ -5,10 +5,215 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FOURTH™ - Aesthetic Apparel</title>
     
-    <link rel="stylesheet" href="style.css">
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <style>
+        /*
+        ** রুট স্টাইল এবং রঙ (Root Styles & Colors) **
+        */
+        :root {
+            --bg-dark: #121212; /* গাঢ় ব্যাকগ্রাউন্ড */
+            --neon-red: #ff3366;
+            --neon-orange: #ff9933;
+            --neon-yellow: #ffff66;
+        }
+
+        /* ওয়েবসাইটের মূল স্টাইল */
+        body {
+            background-color: var(--bg-dark);
+            color: #f0f0f0;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1, h2 {
+            text-transform: uppercase;
+        }
+
+        /*
+        ** নিয়ন টাইটেল এবং বাটন স্টাইল **
+        */
+        .section-title {
+            text-align: center;
+            padding: 50px 0 20px 0;
+            color: var(--neon-yellow);
+            text-shadow: 0 0 5px var(--neon-yellow), 0 0 10px rgba(255, 255, 102, 0.5); /* নিয়ন গ্লো */
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--neon-red);
+            color: var(--bg-dark);
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 15px;
+            font-weight: bold;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--neon-yellow);
+            box-shadow: 0 0 10px var(--neon-yellow);
+            color: var(--bg-dark);
+        }
+
+        /*
+        ** HERO SECTION স্টাইল (অ্যানিমেটেড সেকশনের জন্য) **
+        */
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            overflow: hidden;
+            background-color: #000;
+            text-align: center; /* মোবাইল ফিক্সের জন্য */
+        }
+
+        .neon-title {
+            font-size: 5rem;
+            color: var(--neon-red);
+            text-shadow: 0 0 10px var(--neon-red), 0 0 20px var(--neon-orange), 0 0 30px var(--neon-yellow);
+            letter-spacing: 5px;
+            line-height: 1;
+        }
+        
+        .neon-subtitle {
+            color: #fff;
+            letter-spacing: 2px;
+        }
+
+        .drop-shoulder img {
+            max-width: 400px; /* ইমেজের আকার নিয়ন্ত্রণ */
+            height: auto;
+            filter: drop-shadow(0 0 15px rgba(255, 51, 102, 0.6)); /* ছবির চারপাশে নিয়ন শ্যাডো */
+        }
+
+        /*
+        ** PRODUCTS SECTION স্টাইল **
+        */
+        .product-section {
+            padding: 80px 5%;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .product-card {
+            background-color: #222;
+            border: 1px solid #333;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(255, 153, 51, 0.1); 
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--neon-orange);
+            box-shadow: 0 0 20px rgba(255, 153, 51, 0.4); /* হোভারে নিয়ন গ্লো */
+        }
+
+        .product-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+
+        .product-card h3 {
+            color: var(--neon-red);
+            margin-bottom: 5px;
+        }
+
+        .price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--neon-orange);
+        }
+
+        /*
+        ** ABOUT ও CONTACT সেকশন স্টাইল **
+        */
+        .about-section, .contact-section {
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        .about-section img {
+            width: 100px;
+            margin-top: 20px;
+        }
+
+        .contact-section form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-section input, .contact-section textarea {
+            padding: 15px;
+            background-color: #333;
+            border: 1px solid var(--neon-red);
+            color: white;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .contact-section textarea {
+            resize: vertical;
+        }
+
+        /*
+        ** মোবাইল রেসপন্সিভনেস ফিক্স **
+        */
+        @media (max-width: 768px) {
+            .hero-section {
+                flex-direction: column; 
+                justify-content: center;
+                padding: 20px;
+                min-height: 80vh; /* উচ্চতা কমিয়ে আনা */
+            }
+
+            .neon-title {
+                font-size: 2.8rem; /* লেখার আকার ছোট করা */
+            }
+            
+            .neon-subtitle {
+                font-size: 1rem;
+            }
+
+            .drop-shoulder img {
+                max-width: 80%; /* ছবির আকার ছোট করা */
+                margin-top: 20px;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr; /* এক কলামে একটি কার্ড বসবে */
+            }
+            
+            .product-section, .about-section, .contact-section {
+                padding: 40px 5%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+             .neon-title {
+                font-size: 2rem; 
+            }
+        }
+
+    </style>
 </head>
 <body>
     
@@ -62,6 +267,59 @@
         </form>
     </section>
 
-    <script src="script.js"></script> 
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero Section এর Scroll-Reversible Animation
+        const heroTimeline = gsap.timeline({
+            scrollTrigger: {
+                trigger: "#hero",
+                start: "top top",      
+                end: "bottom top",    
+                scrub: true,          
+                pin: true,           
+            }
+        });
+
+        // ইনিশিয়াল অ্যানিমেশন (স্ক্রিনে প্রবেশ)
+        heroTimeline.from("#left-element", { 
+            x: "-100vw", 
+            opacity: 0,
+            duration: 1,
+            ease: "power2.out"
+        }, 0) 
+        .from("#right-element", { 
+            x: "100vw", 
+            opacity: 0,
+            duration: 1,
+            ease: "power2.out"
+        }, 0)
+
+        // স্ক্রল ডাউন করার পর বের হয়ে যাওয়া
+        .to("#left-element", { 
+            x: "-100vw", 
+            opacity: 0,
+            duration: 1,
+            ease: "power2.in"
+        }, 1) 
+        .to("#right-element", { 
+            x: "100vw", 
+            opacity: 0,
+            duration: 1,
+            ease: "power2.in"
+        }, 1);
+
+        // প্রোডাক্ট সেকশনের টাইটেলটি স্ক্রলের সাথে সামান্য নড়বে
+        gsap.to(".product-section h2", {
+            y: 100, 
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".product-section",
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true
+            }
+        });
+    </script>
 </body>
 </html>
