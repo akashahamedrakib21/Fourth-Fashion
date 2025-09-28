@@ -1,0 +1,157 @@
+/*
+** রুট স্টাইল এবং রঙ (Root Styles & Colors) **
+*/
+:root {
+    --bg-dark: #121212; /* গাঢ় ব্যাকগ্রাউন্ড */
+    --neon-red: #ff3366;
+    --neon-orange: #ff9933;
+    --neon-yellow: #ffff66;
+}
+
+/* ওয়েবসাইটের মূল স্টাইল */
+body {
+    background-color: var(--bg-dark);
+    color: #f0f0f0;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2 {
+    text-transform: uppercase;
+}
+
+/*
+** নিয়ন টাইটেল এবং বাটন স্টাইল **
+*/
+.section-title {
+    text-align: center;
+    padding: 50px 0 20px 0;
+    color: var(--neon-yellow);
+    text-shadow: 0 0 5px var(--neon-yellow), 0 0 10px rgba(255, 255, 102, 0.5); /* নিয়ন গ্লো */
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--neon-red);
+    color: var(--bg-dark);
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-top: 15px;
+    font-weight: bold;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn:hover {
+    background-color: var(--neon-yellow);
+    box-shadow: 0 0 10px var(--neon-yellow);
+    color: var(--bg-dark);
+}
+
+/*
+** HERO SECTION স্টাইল (অ্যানিমেটেড সেকশনের জন্য) **
+*/
+.hero-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    overflow: hidden;
+    background-color: #000;
+}
+
+.neon-title {
+    font-size: 5rem;
+    color: var(--neon-red);
+    text-shadow: 0 0 10px var(--neon-red), 0 0 20px var(--neon-orange), 0 0 30px var(--neon-yellow);
+    letter-spacing: 5px;
+}
+
+.drop-shoulder img {
+    max-width: 400px; /* ইমেজের আকার নিয়ন্ত্রণ */
+    height: auto;
+    filter: drop-shadow(0 0 15px rgba(255, 51, 102, 0.6)); /* ছবির চারপাশে নিয়ন শ্যাডো */
+}
+
+/*
+** PRODUCTS SECTION স্টাইল **
+*/
+.product-section {
+    padding: 80px 5%;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.product-card {
+    background-color: #222;
+    border: 1px solid #333;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255, 153, 51, 0.1); 
+    transition: transform 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--neon-orange);
+    box-shadow: 0 0 20px rgba(255, 153, 51, 0.4); /* হোভারে নিয়ন গ্লো */
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+.product-card h3 {
+    color: var(--neon-red);
+    margin-bottom: 5px;
+}
+
+.price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--neon-orange);
+}
+
+/*
+** ABOUT ও CONTACT সেকশন স্টাইল **
+*/
+.about-section, .contact-section {
+    padding: 80px 5%;
+    text-align: center;
+}
+
+.about-section img {
+    width: 100px;
+    margin-top: 20px;
+}
+
+.contact-section form {
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-section input, .contact-section textarea {
+    padding: 15px;
+    background-color: #333;
+    border: 1px solid var(--neon-red);
+    color: white;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.contact-section textarea {
+    resize: vertical;
+}
